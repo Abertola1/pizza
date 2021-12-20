@@ -73,7 +73,9 @@ const updateUI = async () => {
       document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
       document.getElementById("btn-call-api").disabled = !isAuthenticated;
       document.getElementById("btn-call-api").removeAttribute("disabled");;
-
+      document.addEventListener("click", function(){
+      document.getElementById("btn-call-api").innerHTML = "Order Placed!";
+      });
       eachElement(".profile-image", (e) => (e.src = user.picture));
       eachElement(".user-name", (e) => (e.innerText = user.name));
       eachElement(".user-email", (e) => (e.innerText = user.email));
