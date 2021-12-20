@@ -21,7 +21,7 @@ app.use(express.json())
 
 // middleware
 const checkJwt = jwt({
-  audience: process.env.domain,
+  audience: process.env.audience,
   issuerBaseURL: `https://${process.env.domain}`
 });
 
