@@ -1,7 +1,6 @@
 
 
 const { auth } = require("express-oauth2-jwt-bearer");
-//const authConfig = require("./auth_config.json");
 const express = require("express");
 const { join } = require("path");
 const morgan = require("morgan");
@@ -66,10 +65,6 @@ app.put("/api/external/:user_id", jwtCheck, checkScopes, async (req, res) => {
   }
 });
   
-
-//app.get("/auth_config.json", (req, res) => {
-  //res.sendFile(join(__dirname, "auth_config.json"));
-//});
 
 app.get("/*", (_, res) => {
   res.sendFile(join(__dirname, "index.html"));
