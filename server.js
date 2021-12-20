@@ -1,7 +1,7 @@
 // .. other imports
 
 const { auth } = require("express-oauth2-jwt-bearer");
-const authConfig = require("./auth_config.json");
+//const authConfig = require("./auth_config.json");
 const express = require("express");
 const { join } = require("path");
 const morgan = require("morgan");
@@ -20,9 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 // middleware
-const checkJwt = auth({
-  audience: authConfig.audience,
-  issuerBaseURL: `https://${authConfig.domain}`
+const checkJwt = jwt({
+  audience: process.env.domain,
+  issuerBaseURL: `https://${process.env.domain}`
 });
 
 var jwtCheck = jwt({
@@ -30,10 +30,10 @@ var jwtCheck = jwt({
       cache: true,
       rateLimit: true,
       jwksRequestsPerMinute: 5,
-      jwksUri: 'https://dev-xuk93kxx.us.auth0.com/.well-known/jwks.json'
+      jwksUri: 'https://${process.env.domain}/.well-known/jwks.json'
 }),
-audience: 'https://dev-xuk93kxx.us.auth0.com/api/v2/',
-issuer: 'https://dev-xuk93kxx.us.auth0.com/',
+audience: 'https://${process.env.domain}/api/v2/',
+issuer: 'https://${process.env.domain}/',
 algorithms: ['RS256']
 });
 
@@ -48,7 +48,7 @@ app.put("/api/external/:user_id", jwtCheck, checkScopes, async (req, res) => {
 
   var options = {
     method: 'PATCH', 
-    url: `https://dev-xuk93kxx.us.auth0.com/api/v2/users/${userId}`,
+    url: `https://${process.env.domain}api/v2/users/${userId}`,
     headers: { authorization: req.headers.authorization, 'content-type': 'application/json' },
     data: {
       user_metadata: { orders: req.body.orders },
