@@ -1,7 +1,7 @@
-// .. other imports
+
 
 const { auth } = require("express-oauth2-jwt-bearer");
-//const authConfig = require("./auth_config.json");
+const authConfig = require("./auth_config.json");
 const express = require("express");
 const { join } = require("path");
 const morgan = require("morgan");
