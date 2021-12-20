@@ -21,20 +21,16 @@ app.use(express.json())
 
 // middleware
 const checkJwt = jwt({
-  audience: process.env.audience,
-  issuerBaseURL: `https://${process.env.domain}`
-});
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${process.env.domain}/.well-known/jwks.json`
+  }),
 
-var jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-      cache: true,
-      rateLimit: true,
-      jwksRequestsPerMinute: 5,
-      jwksUri: `https://${process.env.domain}/.well-known/jwks.json`
-}),
-audience: 'https://${process.env.audience}/api/v2/',
-issuer: 'https://${process.env.domain}/',
-algorithms: ['RS256']
+  audience: process.env.audience,
+  issuer: `https://${process.env.domain}/`,
+  algorithms: ["RS256"],
 });
 
 
