@@ -45,14 +45,14 @@ const fetchAuthConfig = () => fetch("/auth_config.json");
  * Initializes the Auth0 client
  */
 const configureClient = async () => {
-  const response = await fetchAuthConfig();
-  const config = await response.json();
+  //const response = await fetchAuthConfig();
+  //const config = await response.json();
 
   auth0 = await createAuth0Client({
-    domain: config.domain,
-    client_id: config.clientId,
-    audience: config.audience,
-    scope: config.scope
+    domain: "dev-xuk93kxx.us.auth0.com",
+    client_id: "ICf9kKlddQbxEh7uLpi3SLphMlrbPK0p",
+    audience: "https://dev-xuk93kxx.us.auth0.com/api/v2/",
+    scope: "openid profile update:current_user_metadata"
   });
 };
 
