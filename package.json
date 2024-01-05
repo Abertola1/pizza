@@ -14,7 +14,7 @@
     "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^1.6.4",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "express-jwt-authz": "^2.4.1",
