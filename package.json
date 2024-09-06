@@ -14,14 +14,14 @@
     "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^1.6.8",
     "express": "^4.17.1",
-    "express-jwt": "^6.1.0",
+    "express-jwt": "^7.7.8",
     "express-jwt-authz": "^2.4.1",
-    "express-oauth2-jwt-bearer": "^1.1.0",
+    "express-oauth2-jwt-bearer": "^1.2.0",
     "helmet": "^3.23.3",
-    "jsonwebtoken": "^8.5.1",
-    "jwks-rsa": "^2.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^2.1.5",
     "morgan": "^1.10.0"
   }
 }
